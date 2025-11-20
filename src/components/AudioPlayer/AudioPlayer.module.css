@@ -1,0 +1,158 @@
+/* src/components/AudioPlayer/AudioPlayer.module.css */
+
+.audioPlayerContainer {
+    /* Assuming this class defines the sticky bar at the bottom */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.trackInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-basis: 300px;
+}
+
+.trackImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.textDetails {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.show {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.playerControls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-grow: 1;
+}
+
+.playPauseButton {
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s;
+    flex-shrink: 0;
+}
+
+.playPauseButton:hover {
+    background-color: var(--color-accent-dark);
+}
+
+/* Progress Bar Styling */
+.progressBarWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.timeDisplay {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Base style for the range input (slider) */
+.progressBar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+
+    /* Custom track and fill using background properties */
+    background-color: var(--color-border);
+    background-image: linear-gradient(var(--color-accent), var(--color-accent));
+    background-repeat: no-repeat;
+    flex-grow: 1;
+}
+
+/* Thumb/Handle styling (WebKit/Blink) */
+.progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Thumb/Handle styling (Firefox) */
+.progressBar::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .audioPlayerContainer {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 1rem;
+        align-items: flex-start;
+    }
+    
+    .trackInfo {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .playerControls {
+        width: 100%;
+        gap: 0.75rem;
+        justify-content: space-between;
+    }
+
+    .progressBarWrapper {
+        flex-grow: 1;
+        order: 2;
+    }
+
+    .playPauseButton {
+        order: 1;
+        margin-left: 0.5rem;
+    }
+}
