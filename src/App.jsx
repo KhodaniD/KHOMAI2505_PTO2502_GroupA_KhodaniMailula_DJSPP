@@ -24,7 +24,7 @@ export default function App() {
           {/* Main Application Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/show/:id" element={<ShowDetail />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
+         <Route path="/favourites" element={<FavouritesPage />} caseSensitive={false} />
         </Routes>
       </main>
       
