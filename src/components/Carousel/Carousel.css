@@ -14,7 +14,9 @@
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  padding: 0;
+  
+  /* FIX: Explicitly apply the horizontal padding (40px) that matches the parent page container's padding in Home.module.css */
+  padding: 0 40px; 
 }
 
 .carousel-title {
@@ -66,8 +68,12 @@
 }
 
 @media (max-width: 768px) {
+    .carousel-header {
+        /* Adjust padding for mobile devices (15px from Home.module.css) */
+        padding: 0 15px; 
+    }
+    
     .carousel-title {
-        /* Keep the auto separation on mobile */
         margin-right: auto; 
         margin-left: 0;
     }
