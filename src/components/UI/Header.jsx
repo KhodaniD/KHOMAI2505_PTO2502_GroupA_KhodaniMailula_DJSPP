@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react'; // Removed unused 'useContext'
 import { Link } from 'react-router-dom';
 import { FaHeart, FaUserCircle, FaSearch, FaPodcast, FaSpa } from 'react-icons/fa';
 import styles from './Header.module.css';
 
-import ThemeToggle from "./ThemeToggle.jsx";
+// FIX 1: Corrected path to point into the ThemeToggle folder
+import ThemeToggle from "./ThemeToggle/ThemeToggle.jsx"; 
 import { useTheme } from "../../context/ThemeContext.jsx";
-import { PodcastContext } from "../../context/PodcastContext.jsx";
+
+// FIX 2: Using the custom hook is cleaner than importing the Context object
+import { usePodcast } from "../../context/PodcastContext.jsx"; 
 
 /**
  * Main application header component.
@@ -15,8 +18,8 @@ const Header = () => {
   // Access theme state and toggle function
   const { isDark, toggleTheme } = useTheme();
   
-  // Access global search state and setter for input binding
-  const { searchTerm, setSearchTerm } = useContext(PodcastContext);
+  // FIX 3: Use the custom hook to access global search state and setter
+  const { searchTerm, setSearchTerm } = usePodcast();
 
   return (
     <header className={styles.header}>
