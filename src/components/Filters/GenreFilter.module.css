@@ -1,0 +1,49 @@
+/* src/components/Filters/GenreFilter.module.css */
+
+.genreFilter {
+    position: relative;
+    display: inline-block;
+    width: 160px; /* Defines the strict container width */
+}
+
+.genreSelect {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    padding-right: 2.5rem; /* Space reserved for the custom arrow icon */
+    
+    border: 1px solid var(--color-border, #ccc);
+    border-radius: 6px;
+    background-color: var(--card-bg-color, white);
+    color: var(--text-color, #333);
+    font-size: 0.95rem;
+    height: 40px;
+    cursor: pointer;
+    
+    /* Ensure long option text is truncated */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Remove default browser dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    transition: border-color 0.2s;
+}
+
+.genreSelect:focus {
+    outline: none;
+    border-color: var(--color-accent); /* Use accent color on focus */
+}
+
+.arrowIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allows clicks to pass through to the select element */
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    background-color: transparent; 
+}
