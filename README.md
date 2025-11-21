@@ -12,7 +12,7 @@
 
 This application is engineered for performance and scalability, demonstrating robust implementation of all required DJS patterns, particularly in global state management and routing resilience.
 
-* **Live Production Demo:** https://khomai-2505-pto-2502-group-a-khodan.vercel.app/
+* **Live Production Demo:** https://bloom-anyway-djspp.vercel.app/
 * **Deployment Status:** **PRODUCTION READY** (Deployed on Vercel with Continuous Integration)
 * **Source Code:** `https://github.com/KhodaniD/KHOMAI2505_PTO2502_GroupA_KhodaniMailula_DJSPP`
 
