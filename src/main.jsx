@@ -16,8 +16,9 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
-      {/* BrowserRouter wraps the entire application to enable client-side routing */}
-      <BrowserRouter>
+      {/* FIX: Adding a basename to force the router to initialize on the correct root path,
+          which often stabilizes Vercel deployments. */}
+      <BrowserRouter basename="/"> 
         {/* Stack all Context Providers to ensure state is available globally */}
         <ThemeProvider>
           <FavouritesProvider>
