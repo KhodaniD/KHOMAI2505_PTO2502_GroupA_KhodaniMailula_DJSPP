@@ -58,7 +58,7 @@
   flex-shrink: 0;
 }
 
-/* Navigation Links and Items (Favorites, Theme Toggle, Profile) */
+/* Navigation Links and Items (Favorites, Theme Toggle) */
 .navLink, .navItem {
     display: flex;
     align-items: center;

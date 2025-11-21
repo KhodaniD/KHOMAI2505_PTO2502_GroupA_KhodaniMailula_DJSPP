@@ -28,10 +28,10 @@
   display: flex;
   gap: 0.5rem;
   
-  /* Absolute positioning anchors controls to the top right corner */
+  /* Absolute positioning anchors controls to the top right corner, compensating for padding */
   position: absolute;
   top: 0;
-  right: 1rem; /* Aligns to the far right edge (matches container padding) */
+  right: 1rem;
   
   z-index: 20;
 }
