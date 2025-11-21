@@ -11,14 +11,21 @@ import FavouritesProvider from './context/FavouritesContext.jsx';
 import { AudioPlayerProvider } from './context/AudioPlayerContext.jsx';
 import { HistoryProvider } from './context/HistoryContext.jsx';
 
+const path = window.location.pathname;
+
+// Fix for deep-link/refresh issues on certain deployment platforms (e.g., Vercel)
+if ((path.startsWith('/favourites') || path.startsWith('/show/')) && window.location.hostname !== 'localhost') {
+  // Force a clean client-side navigation/reload back to the exact URL.
+  window.location.replace(path);
+}
+
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
-      {/* FIX: Adding a basename to force the router to initialize on the correct root path,
-          which often stabilizes Vercel deployments. */}
-      <BrowserRouter basename="/"> 
+      {/* BrowserRouter wraps the entire application to enable client-side routing */}
+      <BrowserRouter basename="/">
         {/* Stack all Context Providers to ensure state is available globally */}
         <ThemeProvider>
           <FavouritesProvider>
