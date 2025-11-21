@@ -1,0 +1,92 @@
+/* src/components/Podcasts/PodcastCard.module.css */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures card fills the height of the grid cell */
+  
+  background: var(--color-bg-secondary);
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+  
+  /* Prevents content from spilling out of rounded corners */
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.textContainer {
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  flex-grow: 1; /* Allows the text container to fill the remaining vertical space */
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin: 0 0 0.25rem 0;
+  color: var(--color-text-primary);
+  /* Multi-line ellipsis truncation for title */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  line-height: 1.2;
+  height: 2.4em;
+  flex-shrink: 0;
+}
+
+.detailsBlock {
+  margin-top: auto; /* Pushes this block (seasons/updated) to the bottom */
+  flex-shrink: 0;
+}
+
+/* Base styles for P tags inside the card (Seasons/Updated) */
+.card p {
+  margin: 0.25rem 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.tags {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap; /* Allows tags to flow to the next line */
+  gap: 0.5rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.tag {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  
+  white-space: normal;
+  text-align: center;
+  
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.updatedText {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
