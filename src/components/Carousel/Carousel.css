@@ -15,7 +15,8 @@
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  padding: 0;
+  /* Padding is needed to align the title/nav area with the container's padding */
+  padding: 0 1rem;
 }
 
 .carousel-title {
@@ -27,6 +28,12 @@
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
+  
+  /* Absolute positioning anchors controls to the top right corner */
+  position: absolute;
+  right: 1.5rem; /* Positioned relative to the container's right edge */
+  top: 1rem; /* Vertically aligned near the top of the container */
+  
   z-index: 20;
 }
 
@@ -64,6 +71,8 @@
         padding: 0 1rem;
     }
     .carousel-nav {
-        right: 1rem;
+        right: 15px; /* Adjust right position for mobile screens */
+        top: 1rem;
+        position: absolute;
     }
 }
