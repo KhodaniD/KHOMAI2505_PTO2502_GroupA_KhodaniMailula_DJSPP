@@ -22,16 +22,19 @@
   font-weight: 600;
   color: var(--color-text-primary);
   flex-shrink: 0;
-  margin-left: 0; 
+  
+  /* Forces the navigation controls to the right by consuming all available space */
+  margin-right: auto;
+  margin-left: 0;
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
-  margin-right: 0;
   
   z-index: 20;
   flex-shrink: 0;
+  margin-right: 0;
 }
 
 .carousel-nav-button {
@@ -64,6 +67,8 @@
 
 @media (max-width: 768px) {
     .carousel-title {
+        /* Keep the auto separation on mobile */
+        margin-right: auto; 
         margin-left: 0;
     }
     
