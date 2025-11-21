@@ -50,7 +50,7 @@ export default function Home() {
     if (error) return <Error message={error} />;
 
     return (
-        <div className={styles.homeContent}>
+       <div className={styles.homeContainer}>
             
             {/* Show the carousel only when no search term is active */}
             {!searchTerm && (
