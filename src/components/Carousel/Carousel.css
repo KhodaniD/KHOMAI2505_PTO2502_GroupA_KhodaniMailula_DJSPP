@@ -3,38 +3,37 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  /* Anchor for the absolutely positioned navigation buttons */
+  /* Anchor for the Swiper navigation (though controls are now flow-based) */
   position: relative;
-  /* Horizontal padding applied for consistent spacing */
-  padding: 0 1rem;
+  /* Component-level padding removed; header and Swiper manage spacing */
+  padding: 0;
 }
 
 .carousel-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes the title and nav to opposite ends */
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  /* Padding is needed to align the title/nav area with the container's padding */
-  padding: 0 1rem;
+  
+  /* Apply horizontal padding here to align with the main page margins (Desktop) */
+  padding: 0 40px;
 }
 
 .carousel-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
+  flex-shrink: 0; /* Prevents the title from shrinking */
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
   
-  /* Absolute positioning anchors controls to the top right corner */
-  position: absolute;
-  right: 1.5rem; /* Positioned relative to the container's right edge */
-  top: 1rem; /* Vertically aligned near the top of the container */
-  
+  /* Flow positioning relies on parent's justify-content: space-between */
   z-index: 20;
+  flex-shrink: 0;
 }
 
 .carousel-nav-button {
@@ -61,18 +60,29 @@
   height: auto;
 }
 
+/* Swiper container padding to align cards with the header/title */
+.mySwiper {
+    padding: 0 40px;
+}
+
 /* --- THEME OVERRIDES --- */
 [data-theme="dark"] .carousel-nav-button:hover {
   background-color: var(--color-bg-hover);
 }
 
 @media (max-width: 768px) {
-    .carousel-container {
-        padding: 0 1rem;
+    .carousel-header {
+        padding: 0 15px; /* Mobile padding */
     }
+    
+    .mySwiper {
+        padding: 0 15px; /* Mobile padding for the cards */
+    }
+    
+    /* Neutralize positioning changes on mobile */
     .carousel-nav {
-        right: 15px; /* Adjust right position for mobile screens */
-        top: 1rem;
-        position: absolute;
+        position: static;
+        top: unset;
+        right: unset;
     }
 }
