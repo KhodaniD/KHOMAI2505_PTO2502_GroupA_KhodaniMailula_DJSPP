@@ -9,14 +9,14 @@
 
 .carousel-header {
   display: flex;
-  /* Distributes title and navigation to opposite sides */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
   
-  /* FIX: Explicitly apply the horizontal padding (40px) that matches the parent page container's padding in Home.module.css */
-  padding: 0 40px; 
+  /* FIX: Explicit padding removed. This element must have padding: 0 here 
+     so that the negative margin fix applied in Home.module.css works. */
+  padding: 0; 
 }
 
 .carousel-title {
@@ -25,7 +25,7 @@
   color: var(--color-text-primary);
   flex-shrink: 0;
   
-  /* Forces the navigation controls to the right by consuming all available space */
+  /* Use auto margin to push the navigation element (carousel-nav) to the far right */
   margin-right: auto;
   margin-left: 0;
 }
@@ -69,8 +69,8 @@
 
 @media (max-width: 768px) {
     .carousel-header {
-        /* Adjust padding for mobile devices (15px from Home.module.css) */
-        padding: 0 15px; 
+        /* Ensure no padding is applied on mobile */
+        padding: 0; 
     }
     
     .carousel-title {

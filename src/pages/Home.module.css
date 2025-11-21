@@ -1,6 +1,7 @@
 /* src/pages/Home.module.css */
 
 .homeContainer {
+    /* Main container padding is 40px */
     padding: 30px 40px;
     max-width: 1400px;
     margin: 0 auto;
@@ -18,6 +19,7 @@
     width: calc(100% + 80px); 
 }
 
+/* Control bar containing GenreFilter and SortSelect */
 .controls {
     display: flex;
     gap: 1.5rem;
@@ -26,6 +28,7 @@
     padding: 0;
 }
 
+/* Base style for all select/filter elements within the controls section */
 .controlsSelect {
     padding: 0.5rem 1rem;
     border: 1px solid var(--border-color, #ccc);
