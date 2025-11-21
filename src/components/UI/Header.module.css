@@ -18,6 +18,7 @@
 .logoContainer {
   display: flex;
   align-items: center;
+  flex-shrink: 0; /* Prevents logo from shrinking */
 }
 
 .logoLink {
@@ -54,6 +55,8 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  /* Prevents icons from being pushed off-screen */
+  flex-shrink: 0;
 }
 
 /* Navigation Links and Items (Favorites, Theme Toggle, Profile) */
@@ -66,12 +69,11 @@
     transition: color 0.2s;
 }
 
-/* The standard implementation handles icon visibility via the theme toggle component */
 .navIcon {
     font-size: 1.4rem;
 }
 
-/* Search Bar Styling */
+/* Search Bar Styling (Desktop) */
 .searchBar {
     display: flex;
     align-items: center;
@@ -79,9 +81,11 @@
     border: 1px solid var(--border-color, #e0e0e0);
     border-radius: 50px;
     padding: 8px 15px;
-    width: 220px; /* Desktop/Tablet Width */
+    width: 220px;
+    max-width: 400px;
     transition: all 0.2s ease;
     box-sizing: border-box;
+    flex-shrink: 1;
 }
 
 .searchInput {
@@ -101,39 +105,38 @@
     margin: 0 5px;
 }
 
-/* MOBILE RESPONSIVENESS (Screen Widths <= 600px) */
-@media (max-width: 600px) {
+/* MOBILE RESPONSIVENESS (<= 768px) */
+@media (max-width: 768px) {
     .header {
-        flex-wrap: wrap; /* Allows search bar to wrap below logo/nav */
+        flex-wrap: wrap;
         padding: 0.8rem 1rem;
-        max-width: 100%;
-        overflow: hidden;
     }
 
-    /* Adjusts the search bar to span full width by compensating for header padding */
-    .header .searchBar {
-        width: calc(100% + 2rem);
-        margin-left: -1rem;
-        margin-right: -1rem;
-        order: 3; /* Pushes the search bar to the bottom row */
-        margin-top: 0.75rem;
-    }
-    
-    .logoContainer, .navIcons {
-        align-self: center;
-    }
-
-    .appTitle {
-        font-size: 1.3rem;
+    .logoContainer {
+        flex-grow: 1;
+        flex-basis: 0;
+        min-width: 0;
     }
 
     .navIcons {
-        flex-grow: 1;
         justify-content: flex-end;
+        flex-shrink: 0;
         gap: 10px;
+    }
+
+    .searchBar {
+        width: 100%;
+        max-width: 100%;
+        /* Orders it to the bottom row */
+        order: 3;
+        margin-top: 0.8rem;
     }
     
     .divider {
         display: none;
+    }
+
+    .appTitle {
+        font-size: 1.3rem;
     }
 }
