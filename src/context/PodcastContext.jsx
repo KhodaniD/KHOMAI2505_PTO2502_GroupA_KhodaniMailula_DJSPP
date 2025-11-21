@@ -2,13 +2,15 @@ import React, { createContext, useState, useEffect, useContext, useMemo } from '
 import { fetchPodcasts } from '../api/fetchData';
 
 // Initialize Context
-const PodcastContext = createContext();
+// FIX: The Context object MUST be exported as a named export
+//      so that the custom hook (usePodcast) and other files can access it.
+export const PodcastContext = createContext(); // <-- FIX IS HERE
 
 /**
  * Custom hook to access Podcast Context data.
  * @returns {Object} Contains podcasts, loading state, error, and filter setters.
  */
-export const usePodcast = () => useContext(PodcastContext);
+export const usePodcast = () => useContext(PodcastContext); // This now correctly accesses the exported Context
 
 const GENRE_MAP = {
   1: "Personal Growth", 2: "Investigative Journalism", 3: "History",
@@ -27,11 +29,16 @@ const formatPodcastData = (podcasts) => {
     description: podcast.description || '',
     image: podcast.image,
     seasons: podcast.seasons,
+    // Note: The structure of genres in the API can be messy (objects or IDs),
+    // this handles normalization to an array of Numbers.
     genres: Array.isArray(podcast.genres) ? podcast.genres.map(g => Number(g.id || g)) : [],
     updated: podcast.updated,
   }));
 };
 
+/**
+ * Main Provider component responsible for fetching data and managing global state.
+ */
 export const PodcastProvider = ({ children }) => {
   const [allPodcasts, setAllPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,6 +51,7 @@ export const PodcastProvider = ({ children }) => {
 
   // Initial Data Fetch
   useEffect(() => {
+    // Note: This assumes fetchPodcasts is structured to handle all three callbacks (success, error, loading)
     fetchPodcasts(
       (data) => setAllPodcasts(formatPodcastData(data)),
       setError,
@@ -62,7 +70,9 @@ export const PodcastProvider = ({ children }) => {
         }
       });
     });
-    return Array.from(genreMap.values()).map(g => ({ id: g.id, title: g.title }));
+    // Add 'All Genres' option
+    const genreArray = Array.from(genreMap.values()).map(g => ({ id: g.id, title: g.title }));
+    return [{ id: 'all', title: 'All Genres' }, ...genreArray];
   }, [allPodcasts]);
 
   // Handle Filtering (Search/Genre) and Sorting
@@ -90,7 +100,7 @@ export const PodcastProvider = ({ children }) => {
     const sorted = [...filtered];
     sorted.sort((a, b) => {
       if (sort === 'title_asc') return a.title.localeCompare(b.title);
-      if (sort === 'title_desc') return b.title.localeCompare(a.title); // Fixed comparison
+      if (sort === 'title_desc') return b.title.localeCompare(a.title); 
 
       const dateA = new Date(a.updated);
       const dateB = new Date(b.updated);
@@ -103,17 +113,22 @@ export const PodcastProvider = ({ children }) => {
   }, [allPodcasts, genre, sort, searchTerm]);
 
   const value = {
+    // Export raw data for features like the carousel
     allPodcasts,
+    // Export filtered/sorted data for the main grid
     podcasts: filteredAndSortedPodcasts,
     loading,
     error,
+    // Filter and Sort State/Setters
     genre,
     setGenre,
     sort,
     setSort,
-    genres: allGenres,
+    genres: allGenres, // Includes 'All Genres' for dropdown
     searchTerm,
     setSearchTerm,
+    // Helper function to get genre title
+    getGenreTitle: (id) => GENRE_MAP[id] || `Genre ${id}` 
   };
 
   return (
