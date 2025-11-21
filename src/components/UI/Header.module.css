@@ -83,7 +83,8 @@
     background-color: var(--secondary-bg, #f5f5f5);
     margin: 0 0.5rem;
     border-radius: 50px;
-    padding: 8px 15px;
+    /* Slightly increased vertical padding for more height */
+    padding: 10px 18px;
     
     max-width: 350px;
     
@@ -117,6 +118,14 @@
     color: var(--text-color, #333); 
     /* Padding is set to 0 to prevent misalignment with the search icon */
     padding: 0; 
+    /* Ensure the input element inherits the line height properly */
+    line-height: 1.25rem; 
+}
+
+/* Aggressively remove outline on focus */
+.searchInput:focus {
+    outline: none !important; 
+    box-shadow: none !important;
 }
 
 .divider {
