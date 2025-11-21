@@ -3,20 +3,17 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  /* Keep container relative for future potential absolute elements */
   position: relative;
-  /* Horizontal padding is controlled by the parent layout component (Home.jsx) */
   padding: 0;
 }
 
 .carousel-header {
   display: flex;
-  /* Pushes the title and the nav to opposite ends */
+  /* Distributes title and navigation to opposite sides */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  /* Padding removed here, margins on children will align content */
   padding: 0;
 }
 
@@ -24,17 +21,14 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  /* Ensures the title stays left and leaves room for arrows on the right */
   flex-shrink: 0;
-  /* Add margin here to align the title with the left edge of the cards/content (40px) */
-  margin-left: 40px;
+  margin-left: 0; 
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
-  /* Add margin here to align the arrows with the right edge of the cards/content (40px) */
-  margin-right: 40px;
+  margin-right: 0;
   
   z-index: 20;
   flex-shrink: 0;
@@ -64,18 +58,17 @@
   height: auto;
 }
 
-/* Swiper container must be full width with no padding */
 .mySwiper {
     padding: 0;
 }
 
 @media (max-width: 768px) {
     .carousel-title {
-        margin-left: 15px; /* Use mobile margin */
+        margin-left: 0;
     }
     
     .carousel-nav {
-        margin-right: 15px; /* Use mobile margin */
+        margin-right: 0;
     }
     
     .mySwiper {
