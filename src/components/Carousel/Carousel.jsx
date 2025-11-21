@@ -8,7 +8,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 // Base Swiper CSS imports
 import "swiper/css";
 import "swiper/css/navigation";
-import styles from "./Carousel.css"; // Imported for CSS module mapping
+import * as styles from "./Carousel.css"; // Imports CSS classes via namespace import
 
 /**
  * Renders a horizontally scrolling carousel of recommended podcasts.
