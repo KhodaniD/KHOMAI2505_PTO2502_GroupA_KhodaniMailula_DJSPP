@@ -5,7 +5,6 @@
   margin-bottom: 2rem;
   /* Anchor for the absolutely positioned navigation buttons */
   position: relative;
-  /* Component-level padding removed; header and swiper manage spacing */
   padding: 0;
 }
 
@@ -15,6 +14,7 @@
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
+  
   /* Apply 40px horizontal padding to align the header content with the main page margin */
   padding: 0 40px;
 }
@@ -23,23 +23,22 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  /* Ensures the title stays on the left. */
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
   
-  /* Absolute positioning anchors controls to the top right corner */
-  position: absolute;
-  right: 40px; /* Aligns with the right margin of the page */
-  top: 1rem; /* Vertically align them near the top of the container, next to the title */
+  /* Absolute positioning with high specificity needed to override external styles */
+  position: absolute !important;
+  right: 40px !important; /* Aligns with the desktop right margin */
+  top: 1rem !important; /* Aligns vertically with the title */
   
-  z-index: 50; 
+  z-index: 100 !important; /* Extremely high Z-index to win conflicts */
 }
 
 .carousel-nav-button {
-  background: var(--card-bg-color, white); 
+  background: var(--card-bg-color, white);
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   width: 36px;
@@ -50,7 +49,6 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,7 +72,7 @@
 }
 
 @media (max-width: 768px) {
-    /* Adjust padding for mobile devices (15px) */
+    /* Adjust padding for mobile devices */
     .carousel-header {
         padding: 0 15px;
     }
@@ -83,8 +81,9 @@
     }
     
     .carousel-nav {
-        right: 15px; /* Adjust right position for mobile screens (matching 15px padding) */
-        top: 1rem;
-        position: absolute;
+        /* Mobile positioning with high specificity (matching 15px mobile padding) */
+        right: 15px !important;
+        top: 1rem !important;
+        position: absolute !important;
     }
 }
