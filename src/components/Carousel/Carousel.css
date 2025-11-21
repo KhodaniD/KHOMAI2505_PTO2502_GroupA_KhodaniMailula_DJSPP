@@ -5,13 +5,12 @@
   margin-bottom: 2rem;
   /* Anchor for the absolutely positioned navigation buttons */
   position: relative;
-  /* Horizontal padding is controlled by the parent wrapper (contentWrapper) */
-  padding: 0;
+  /* Horizontal padding applied for consistent spacing */
+  padding: 0 1rem;
 }
 
 .carousel-header {
   display: flex;
-  /* Space between the Title (left) and the Nav (right) */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
@@ -29,10 +28,10 @@
   display: flex;
   gap: 0.5rem;
   
-  /* Absolute positioning anchors controls to the top right of the container */
+  /* Absolute positioning anchors controls to the top right corner */
   position: absolute;
   top: 0;
-  right: 0;
+  right: 1rem; /* Aligns to the far right edge (matches container padding) */
   
   z-index: 20;
 }
@@ -68,9 +67,9 @@
 
 @media (max-width: 768px) {
     .carousel-container {
-        padding: 0;
+        padding: 0 1rem;
     }
     .carousel-nav {
-        right: 0;
+        right: 1rem;
     }
 }
