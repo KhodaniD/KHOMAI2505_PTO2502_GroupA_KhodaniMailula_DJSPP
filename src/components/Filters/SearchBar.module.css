@@ -1,0 +1,68 @@
+/* src/components/Filters/SearchBar.module.css */
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Allows the search bar to fill available space */
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  /* Allows clicks on the icon area to pass through to the input */
+  pointer-events: none;
+}
+
+.searchInput {
+  /* Use theme variables */
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  
+  border-radius: 20px;
+  
+  /* Standard Padding: 0.5rem top/bottom, 1rem right, 2.25rem left for icon */
+  padding: 0.5rem 1rem 0.5rem 2.25rem;
+  
+  font-family: inherit;
+  font-size: 0.9rem;
+  
+  /* Ensure input fills the wrapper space */
+  width: 100%;
+  flex-grow: 1;
+  min-width: 0;
+  
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background-color: var(--color-bg-primary);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* MOBILE RESPONSIVENESS (Screen Widths <= 600px) */
+@media (max-width: 600px) {
+    .searchWrapper {
+        width: 100%;
+        flex-grow: 1;
+    }
+    
+    .searchInput {
+        /* Adjust right padding for smaller screens */
+        padding: 0.5rem 0.5rem 0.5rem 2.25rem;
+    }
+    
+    .searchInput:focus {
+        width: 100%;
+    }
+}
