@@ -3,15 +3,20 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
+  /* Anchor for the absolutely positioned navigation buttons */
   position: relative;
+  /* Horizontal padding is controlled by the parent wrapper (contentWrapper) */
+  padding: 0;
 }
 
 .carousel-header {
   display: flex;
-  justify-content: space-between; /* Pushes content (title and nav) to the far edges */
+  /* Space between the Title (left) and the Nav (right) */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
+  padding: 0;
 }
 
 .carousel-title {
@@ -23,7 +28,13 @@
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
-  margin-left: auto; /* Pushes the nav buttons to the right edge */
+  
+  /* Absolute positioning anchors controls to the top right of the container */
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  z-index: 20;
 }
 
 .carousel-nav-button {
@@ -53,4 +64,13 @@
 /* --- THEME OVERRIDES --- */
 [data-theme="dark"] .carousel-nav-button:hover {
   background-color: var(--color-bg-hover);
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 0;
+    }
+    .carousel-nav {
+        right: 0;
+    }
 }

@@ -2,25 +2,40 @@
 
 /* Light theme (default) */
 :root {
+  /* Core Palette */
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #555;
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f9f9f9;
   --color-border: #e0e0e0;
   --color-accent: #007bff;
+
+  /* MAPPING VARIABLES FOR COMPONENTS */
+  --header-bg-color: var(--color-bg-primary);
+  --text-color: var(--color-text-primary);
+  --secondary-bg: var(--color-bg-secondary);
+  --border-color: var(--color-border);
 }
 
 /* Dark theme definition */
 [data-theme="dark"] {
+  /* Core Palette */
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #a0a0a0;
   --color-bg-primary: #121212;
   --color-bg-secondary: #1e1e1e;
   --color-border: #333;
   --color-accent: #00aaff;
+
+  /* MAPPING VARIABLES FOR COMPONENTS */
+  --header-bg-color: var(--color-bg-secondary);
+  --text-color: var(--color-text-primary);
+  --secondary-bg: var(--color-bg-secondary);
+  --border-color: var(--color-border);
 }
 
-/* Global body styles and layout fixes */
+/* GLOBAL BODY & LAYOUT */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -36,7 +51,24 @@ body {
   padding-bottom: 80px;
 }
 
-/* Standard padding for main content area */
+/* Reset padding on main to allow the wrapper to control spacing */
 main {
-  padding: 1rem;
+  padding: 0;
+}
+
+/* Centering Container for content */
+.contentWrapper {
+  /* Constrain the content width on large screens */
+  max-width: 1400px;
+  /* Center the content block horizontally */
+  margin: 0 auto;
+  /* Add default horizontal padding for desktop spacing */
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    /* Reduce horizontal padding on mobile devices */
+    padding: 0 1rem;
+  }
 }
