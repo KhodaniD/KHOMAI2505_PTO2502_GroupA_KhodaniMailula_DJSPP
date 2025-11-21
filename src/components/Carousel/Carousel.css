@@ -3,20 +3,19 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  /* Anchor for the Swiper navigation (though controls are now flow-based) */
+  /* Anchor for the absolutely positioned navigation buttons */
   position: relative;
-  /* Component-level padding removed; header and Swiper manage spacing */
+  /* Component-level padding removed; header and swiper manage spacing */
   padding: 0;
 }
 
 .carousel-header {
   display: flex;
-  justify-content: space-between; /* Pushes the title and nav to opposite ends */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  
-  /* Apply horizontal padding here to align with the main page margins (Desktop) */
+  /* Apply 40px horizontal padding to align the title with the main page content */
   padding: 0 40px;
 }
 
@@ -24,16 +23,18 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  flex-shrink: 0; /* Prevents the title from shrinking */
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
   
-  /* Flow positioning relies on parent's justify-content: space-between */
+  /* Absolute positioning anchors controls to the top right corner */
+  position: absolute;
+  right: 40px; /* Anchored to the right edge exactly 40px from the container */
+  top: 1rem; /* Vertically aligned near the top of the container */
+  
   z-index: 20;
-  flex-shrink: 0;
 }
 
 .carousel-nav-button {
@@ -60,7 +61,7 @@
   height: auto;
 }
 
-/* Swiper container padding to align cards with the header/title */
+/* Swiper container padding to align cards with the header */
 .mySwiper {
     padding: 0 40px;
 }
@@ -71,18 +72,18 @@
 }
 
 @media (max-width: 768px) {
+    /* Adjust padding for mobile devices (15px) */
     .carousel-header {
-        padding: 0 15px; /* Mobile padding */
+        padding: 0 15px;
     }
-    
     .mySwiper {
-        padding: 0 15px; /* Mobile padding for the cards */
+        padding: 0 15px;
     }
     
-    /* Neutralize positioning changes on mobile */
     .carousel-nav {
-        position: static;
-        top: unset;
-        right: unset;
+        /* Adjust right position for mobile screens (matching 15px padding) */
+        right: 15px;
+        top: 1rem;
+        position: absolute;
     }
 }
