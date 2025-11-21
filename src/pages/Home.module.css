@@ -8,10 +8,6 @@
     color: var(--text-color);
 }
 
-.homeContent {
-    /* Grouping container for internal layout */
-}
-
 /* Control bar containing GenreFilter and SortSelect */
 .controls {
     display: flex;
