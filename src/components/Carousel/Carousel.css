@@ -3,10 +3,9 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  /* Anchor for the absolutely positioned navigation buttons */
   position: relative;
-  /* Horizontal padding applied for consistent spacing */
-  padding: 0 1rem;
+  /* Horizontal padding is controlled by the .mySwiper element and header */
+  padding: 0;
 }
 
 .carousel-header {
@@ -15,25 +14,23 @@
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  padding: 0;
+  /* Added desktop padding to align header content with main container margins */
+  padding: 0 40px;
 }
 
 .carousel-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
+  flex-shrink: 0;
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
-  
-  /* Absolute positioning anchors controls to the top right corner, compensating for padding */
-  position: absolute;
-  top: 0;
-  right: 1rem;
-  
+  /* Alignment is now handled by .carousel-header's justify-content: space-between */
   z-index: 20;
+  flex-shrink: 0;
 }
 
 .carousel-nav-button {
@@ -60,16 +57,27 @@
   height: auto;
 }
 
+/* --- SWIPER OVERRIDES --- */
+.mySwiper {
+  /* Padding added to the swiper container itself to align the cards with the content margins */
+  padding: 0 40px;
+}
+
 /* --- THEME OVERRIDES --- */
 [data-theme="dark"] .carousel-nav-button:hover {
   background-color: var(--color-bg-hover);
 }
 
 @media (max-width: 768px) {
-    .carousel-container {
-        padding: 0 1rem;
+    .carousel-header {
+        padding: 0 15px;
     }
+    
     .carousel-nav {
-        right: 1rem;
+        right: unset;
+    }
+    
+    .mySwiper {
+        padding: 0 15px;
     }
 }
