@@ -7,6 +7,17 @@
     color: var(--text-color);
 }
 
+/* FIX: Use negative margins to pull the full-width carousel container out 
+   to the edge of the padded .homeContainer. 
+   :global() is used because .carousel-container is defined in a different module (Carousel.css). 
+*/
+.homeContainer :global(.carousel-container) {
+    /* Counteract the 40px horizontal padding from .homeContainer */
+    margin: 0 -40px; 
+    /* Extend width to cover the negative margin */
+    width: calc(100% + 80px); 
+}
+
 .controls {
     display: flex;
     gap: 1.5rem;
@@ -66,6 +77,12 @@
         padding: 20px 15px;
     }
     
+    /* Mobile Fix: Counteract the 15px horizontal padding */
+    .homeContainer :global(.carousel-container) {
+        margin: 0 -15px; 
+        width: calc(100% + 30px);
+    }
+
     .controls {
         flex-direction: row;
         align-items: center;
