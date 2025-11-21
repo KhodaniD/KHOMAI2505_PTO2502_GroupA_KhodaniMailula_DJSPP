@@ -1,0 +1,48 @@
+/* src/components/Podcasts/PodcastGrid.module.css */
+
+.grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+  color: var(--text-color);
+  
+  /* Default Mobile/Small Tablet: 2 columns */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Very Small Mobile: 1 column */
+@media (max-width: 479px) {
+    .grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Laptop: 4 columns */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: 6 columns */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.noResults {
+    /* Ensures the 'No Results' message spans all columns */
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+}
