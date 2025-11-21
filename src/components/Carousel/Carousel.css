@@ -3,14 +3,15 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  position: relative; /* Base for absolute positioning of nav buttons */
+  position: relative;
 }
 
 .carousel-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes content (title and nav) to the far edges */
   align-items: center;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .carousel-title {
@@ -19,13 +20,10 @@
   color: var(--color-text-primary);
 }
 
-/* Positions the navigation buttons to the top right corner */
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-left: auto; /* Pushes the nav buttons to the right edge */
 }
 
 .carousel-nav-button {
