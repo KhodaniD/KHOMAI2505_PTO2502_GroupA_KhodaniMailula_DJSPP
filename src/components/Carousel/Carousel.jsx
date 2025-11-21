@@ -5,9 +5,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
+// Base Swiper CSS imports
 import "swiper/css";
 import "swiper/css/navigation";
-import "./Carousel.css";
+import styles from "./Carousel.css"; // Imported for CSS module mapping
 
 /**
  * Renders a horizontally scrolling carousel of recommended podcasts.
@@ -23,14 +24,20 @@ function Carousel({ podcasts }) {
   }, [podcasts]);
 
   return (
-    <section className="carousel-container">
-      <div className="carousel-header">
-        <h2 className="carousel-title">Recommended Shows</h2>
-        <div className="carousel-nav">
-          <button className="carousel-nav-button custom-prev" aria-label="Previous Slide">
+    <section className={styles['carousel-container']}>
+      <div className={styles['carousel-header']}>
+        <h2 className={styles['carousel-title']}>Recommended Shows</h2>
+        <div className={styles['carousel-nav']}>
+          <button 
+            className={`${styles['carousel-nav-button']} custom-prev`} 
+            aria-label="Previous Slide"
+          >
             <FaChevronLeft />
           </button>
-          <button className="carousel-nav-button custom-next" aria-label="Next Slide">
+          <button 
+            className={`${styles['carousel-nav-button']} custom-next`} 
+            aria-label="Next Slide"
+          >
             <FaChevronRight />
           </button>
         </div>
@@ -58,9 +65,10 @@ function Carousel({ podcasts }) {
         }}
       >
         {recommendedShows.map((podcast) => (
-          <SwiperSlide key={podcast.id} className="carousel-slide">
+          <SwiperSlide key={podcast.id} className={styles['carousel-slide']}>
             <PodcastCard 
               podcast={podcast} 
+              // State passing ensures genre tags are available on detail page immediately
               onClick={() => navigate(`/show/${podcast.id}`, { state: { genres: podcast.genres } })}
             />
           </SwiperSlide>
