@@ -14,8 +14,8 @@
   margin-bottom: 0.5rem;
   width: 100%;
   
-  /* FIX: Explicit padding removed. This element must have padding: 0 here 
-     so that the negative margin fix applied in Home.module.css works. */
+  /* FIX: Explicit padding must be 0 here, relying entirely on the parent's padding 
+     or the negative margin fix from Home.module.css to set the boundaries. */
   padding: 0; 
 }
 
@@ -23,11 +23,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
-  flex-shrink: 0;
   
-  /* Use auto margin to push the navigation element (carousel-nav) to the far right */
-  margin-right: auto;
-  margin-left: 0;
+  /* FIX: Allow the title to grow and consume all available space, 
+     forcing the navigation element to the far right. */
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin: 0;
 }
 
 .carousel-nav {
@@ -74,8 +75,8 @@
     }
     
     .carousel-title {
-        margin-right: auto; 
-        margin-left: 0;
+        flex-grow: 1; 
+        margin: 0;
     }
     
     .carousel-nav {
