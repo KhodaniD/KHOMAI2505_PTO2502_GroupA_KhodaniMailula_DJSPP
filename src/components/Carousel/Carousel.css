@@ -1,0 +1,58 @@
+/* src/components/Carousel/Carousel.css */
+
+.carousel-container {
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative; /* Base for absolute positioning of nav buttons */
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Positions the navigation buttons to the top right corner */
+.carousel-nav {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.carousel-nav-button {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-nav-button:hover {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.carousel-slide {
+  height: auto;
+}
+
+/* --- THEME OVERRIDES --- */
+[data-theme="dark"] .carousel-nav-button:hover {
+  background-color: var(--color-bg-hover);
+}
