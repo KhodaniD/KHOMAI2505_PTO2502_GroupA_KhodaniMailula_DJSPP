@@ -3,38 +3,41 @@
 .carousel-container {
   width: 100%;
   margin-bottom: 2rem;
-  /* Anchor for the absolutely positioned navigation buttons */
+  /* Keep container relative for future potential absolute elements */
   position: relative;
+  /* Horizontal padding is controlled by the parent layout component (Home.jsx) */
   padding: 0;
 }
 
 .carousel-header {
   display: flex;
+  /* Pushes the title and the nav to opposite ends */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
   width: 100%;
-  
-  /* Apply 40px horizontal padding to align the header content with the main page margin */
-  padding: 0 40px;
+  /* Padding removed here, margins on children will align content */
+  padding: 0;
 }
 
 .carousel-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-text-primary);
+  /* Ensures the title stays left and leaves room for arrows on the right */
+  flex-shrink: 0;
+  /* Add margin here to align the title with the left edge of the cards/content (40px) */
+  margin-left: 40px;
 }
 
 .carousel-nav {
   display: flex;
   gap: 0.5rem;
+  /* Add margin here to align the arrows with the right edge of the cards/content (40px) */
+  margin-right: 40px;
   
-  /* Absolute positioning with high specificity needed to override external styles */
-  position: absolute !important;
-  right: 40px !important; /* Aligns with the desktop right margin */
-  top: 1rem !important; /* Aligns vertically with the title */
-  
-  z-index: 100 !important; /* Extremely high Z-index to win conflicts */
+  z-index: 20;
+  flex-shrink: 0;
 }
 
 .carousel-nav-button {
@@ -61,29 +64,21 @@
   height: auto;
 }
 
-/* Add padding to the swiper container so the cards align with the header */
+/* Swiper container must be full width with no padding */
 .mySwiper {
-    padding: 0 40px;
-}
-
-/* --- THEME OVERRIDES --- */
-[data-theme="dark"] .carousel-nav-button:hover {
-  background-color: var(--color-bg-hover);
+    padding: 0;
 }
 
 @media (max-width: 768px) {
-    /* Adjust padding for mobile devices */
-    .carousel-header {
-        padding: 0 15px;
-    }
-    .mySwiper {
-        padding: 0 15px;
+    .carousel-title {
+        margin-left: 15px; /* Use mobile margin */
     }
     
     .carousel-nav {
-        /* Mobile positioning with high specificity (matching 15px mobile padding) */
-        right: 15px !important;
-        top: 1rem !important;
-        position: absolute !important;
+        margin-right: 15px; /* Use mobile margin */
+    }
+    
+    .mySwiper {
+        padding: 0;
     }
 }
